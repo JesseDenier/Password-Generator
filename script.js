@@ -51,11 +51,9 @@ function generatePassword(length) {
   // Returns an error if user selection is incorrect.
   if (ifLength.value < 8) {
     result = "Too Short";
-  }
-  if (ifLength.value > 128) {
+  } else if (ifLength > 128) {
     result = "Too Long";
-  }
-  if (result === "") {
+  } else if (result === "") {
     result = "Selection Necessary";
   }
 
