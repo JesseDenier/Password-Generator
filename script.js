@@ -7,34 +7,48 @@ var ifSpecial = document.querySelector("#ifSpecial");
 var generateBtn = document.querySelector("#generate");
 var formBtn = document.querySelector("#form");
 var passwordText = document.querySelector("#password");
+var questions = document.querySelector("#questions");
 
 // Set possible characters and combinations.
-var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#$%&()*+,-./:;<=>?@[^_`{|}~';
 var lowercase = "abcdefghijklmnopqrstuvwxyz";
 var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numerical = "0123456789";
 var special = '!"#$%&()*+,-./:;<=>?@[^_`{|}~';
-var chosenCharacters = "";
 
 // Create a random string of characters.
 function generatePassword(length) {
-  let result = ' ';
+  var result = "";
+  var chosenCharacters = "";
+
   if (ifLowercase.checked) {
-    chosenCharacters = chosenCharacters + lowercase;
+    chosenCharacters += lowercase;
   }
   else {
-    chosenCharacters = chosenCharacters - lowercase;
+    chosenCharacters = chosenCharacters.replace(lowercase, "");
   }
+
   if (ifUppercase.checked) {
-    chosenCharacters = chosenCharacters + uppercase;
+    chosenCharacters += uppercase;
   }
+  else {
+    chosenCharacters = chosenCharacters.replace(uppercase, "");
+  }
+
   if (ifNumerical.checked) {
-    chosenCharacters = chosenCharacters + numerical;
+    chosenCharacters += numerical;
   }
+  else {
+    chosenCharacters = chosenCharacters.replace(numerical, "");
+  }
+
   if (ifSpecial.checked) {
-    chosenCharacters = chosenCharacters + special;
+    chosenCharacters += special;
   }
-  for (let i = 0; i < length; i++) {
+  else {
+    chosenCharacters = chosenCharacters.replace(special, "");
+  }
+
+  for (var i = 0; i < length; i++) {
     result += chosenCharacters.charAt(Math.floor(Math.random() * chosenCharacters.length));
   }
   return result;
