@@ -1,14 +1,7 @@
 //Connect all references between HTML and Javascript.
-var generateBtn = document.querySelector("#generate");
-var formBtn = document.querySelector("#form");
-var copyBtn = document.querySelector("#copy");
-var passwordText = document.querySelector("#password");
-var questions = document.querySelector("#questions");
-var ifLength = document.querySelector("#ifLength");
-var ifLowercase = document.querySelector("#ifLowercase");
-var ifUppercase = document.querySelector("#ifUppercase");
-var ifNumerical = document.querySelector("#ifNumerical");
-var ifSpecial = document.querySelector("#ifSpecial");
+function getElementById(id) {
+  return document.querySelector("#" + id);
+}
 
 // Set strings based on character selection.
 var lowercase = "abcdefghijklmnopqrstuvwxyz";
@@ -92,7 +85,7 @@ formBtn.addEventListener("click", showForm);
 /* Copy password into clipboard */
 function copyPassword() {
   navigator.clipboard.writeText
-    (password.value);
+    (passwordText.value);
 }
 
 // Add event listener to copy button
