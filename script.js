@@ -5,11 +5,15 @@ function getElementById(id) {
 
 // Assign characters to corresponding strings.
 var characterSets = {
-  lowercase: 'abcdefghijklmnopqrstuvwxyz',
-  uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-  numerical: '0123456789',
-  special: '!"#$%&()*+,-./:;<=>?@[^_`{|}~',
+  //Had to add "if" and capitalize first letter to make the for loop below work correctly. Unsure if naming structure is correct now.
+  ifLowercase: 'abcdefghijklmnopqrstuvwxyz',
+  ifUppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  ifNumerical: '0123456789',
+  ifSpecial: '!"#$%&()*+,-./:;<=>?@[^_`{|}~',
 }
+
+// Builds an array of checkboxes.
+var checkboxes = [ifLowercase, ifUppercase, ifNumerical, ifSpecial];
 
 // Create a random string of characters based on user inputs.
 function generatePassword(length) {
@@ -17,29 +21,13 @@ function generatePassword(length) {
   var chosenCharacters = '';
 
   // Sets which characters to allow in the random string.
-  if (ifLowercase.checked) {
-    chosenCharacters += characterSets.lowercase;
-  }
-  else {
-    chosenCharacters = chosenCharacters.replace(characterSets.lowercase, '');
-  }
-  if (ifUppercase.checked) {
-    chosenCharacters += characterSets.uppercase;
-  }
-  else {
-    chosenCharacters = chosenCharacters.replace(characterSets.uppercase, '');
-  }
-  if (ifNumerical.checked) {
-    chosenCharacters += characterSets.numerical;
-  }
-  else {
-    chosenCharacters = chosenCharacters.replace(characterSets.numerical, '');
-  }
-  if (ifSpecial.checked) {
-    chosenCharacters += characterSets.special;
-  }
-  else {
-    chosenCharacters = chosenCharacters.replace(characterSets.special, '');
+  for (i = 0; i < checkboxes.length; i++) {
+
+    if (checkboxes[i].checked) {
+      chosenCharacters += characterSets[checkboxes[i].id];
+    } else {
+      chosenCharacters = chosenCharacters.replace(characterSets[checkboxes[i].id], '');
+    }
   }
 
   // Picks random characters for the string.
@@ -50,7 +38,7 @@ function generatePassword(length) {
   // Returns an error if user selection is incorrect.
   if (ifLength.value < 8) {
     result = 'Too Short';
-  } else if (ifLength > 128) {
+  } else if (ifLength.value > 128) {
     result = 'Too Long';
   } else if (result === '') {
     result = 'Selection Necessary';
@@ -73,8 +61,7 @@ generateBtn.addEventListener('click', writePassword);
 function showForm() {
   if (questions.style.display === 'none') {
     questions.style.display = 'block';
-  }
-  else {
+  } else {
     questions.style.display = 'none';
   }
 }
