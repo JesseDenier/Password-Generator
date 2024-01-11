@@ -12,7 +12,7 @@ N/A
 ## Usage
 
 Here is a link to the website: https://jessedenier.github.io/Password-Generator/
-This webpage can be opened and interacted with using either button, and the expandable form located below the buttons and accessable with the "Options" button.
+This webpage can be opened and interacted with using buttons, and the expandable form located below the buttons. The Generate button will create a random string of characters based on the users answers to the form. The options button will show and hide the form. Lastly the copy button will allow the user an easy way to copy the password to their clipboard for use elsewhere.
 
 ## Credits
 
