@@ -51,6 +51,17 @@ function generatePassword(length) {
   for (var i = 0; i < length; i++) {
     result += chosenCharacters.charAt(Math.floor(Math.random() * chosenCharacters.length));
   }
+
+  if (ifLength.value < 8) {
+    result = "Too Short";
+  }
+  if (ifLength.value > 128) {
+    result = "Too Long";
+  }
+  if (result === "") {
+    result = "Selection Necessary";
+  }
+
   return result;
 }
 
