@@ -1,19 +1,67 @@
 //Connect references between HTML and Javascript.
 var ifLength = document.querySelector("#ifLength");
+var ifLowercase = document.querySelector("#ifLowercase");
+var ifUppercase = document.querySelector("#ifUppercase");
+var ifNumerical = document.querySelector("#ifNumerical");
+var ifSpecial = document.querySelector("#ifSpecial");
 var generateBtn = document.querySelector("#generate");
 var formBtn = document.querySelector("#form");
 var passwordText = document.querySelector("#password");
+var questions = document.querySelector("#questions");
 
-// Declare all possible characters.
-const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!"#$%&()*+,-./:;<=>?@[^_`{|}~'
+// Set possible characters and combinations.
+var lowercase = "abcdefghijklmnopqrstuvwxyz";
+var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numerical = "0123456789";
+var special = '!"#$%&()*+,-./:;<=>?@[^_`{|}~';
 
 // Create a random string of characters.
 function generatePassword(length) {
-  let result = ' ';
-  var charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  var result = "";
+  var chosenCharacters = "";
+
+  if (ifLowercase.checked) {
+    chosenCharacters += lowercase;
   }
+  else {
+    chosenCharacters = chosenCharacters.replace(lowercase, "");
+  }
+
+  if (ifUppercase.checked) {
+    chosenCharacters += uppercase;
+  }
+  else {
+    chosenCharacters = chosenCharacters.replace(uppercase, "");
+  }
+
+  if (ifNumerical.checked) {
+    chosenCharacters += numerical;
+  }
+  else {
+    chosenCharacters = chosenCharacters.replace(numerical, "");
+  }
+
+  if (ifSpecial.checked) {
+    chosenCharacters += special;
+  }
+  else {
+    chosenCharacters = chosenCharacters.replace(special, "");
+  }
+
+  for (var i = 0; i < length; i++) {
+    result += chosenCharacters.charAt(Math.floor(Math.random() * chosenCharacters.length));
+  }
+
+  if (ifLength.value < 8) {
+    result = "Too Short";
+  }
+  if (ifLength.value > 128) {
+    result = "Too Long";
+  }
+  if (result === "") {
+    result = "Selection Necessary";
+  }
+
   return result;
 }
 
