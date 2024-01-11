@@ -117,18 +117,8 @@ button[disabled] {
   overflow: hidden;
 }
 
-@media (max-width: 690px) {
-  .btn {
-    font-size: 1rem;
-    margin: 16px 0px 0px 0px;
-    padding: 10px 15px;
-  }
 
-  #password {
-    font-size: 1rem;
-  }
-}
-
+/* Centers the form and sets reasonable line breaks and margins. */
 form {
   margin-top: 20px;
 }
@@ -140,6 +130,18 @@ form * {
 
 form div * {
   display: inline;
+}
+
+@media (max-width: 690px) {
+  .btn {
+    font-size: 1rem;
+    margin: 16px 0px 0px 0px;
+    padding: 10px 15px;
+  }
+
+  #password {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 500px) {
