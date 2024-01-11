@@ -1,6 +1,7 @@
 //Connect all references between HTML and Javascript.
 var generateBtn = document.querySelector("#generate");
 var formBtn = document.querySelector("#form");
+var copyBtn = document.querySelector("#copy");
 var passwordText = document.querySelector("#password");
 var questions = document.querySelector("#questions");
 var ifLength = document.querySelector("#ifLength");
@@ -87,3 +88,12 @@ function showForm() {
 
 // Add event listener to form button
 formBtn.addEventListener("click", showForm);
+
+/* Copy password into clipboard */
+function copyPassword() {
+  navigator.clipboard.writeText
+    (password.value);
+}
+
+// Add event listener to copy button
+copyBtn.addEventListener("click", copyPassword);
