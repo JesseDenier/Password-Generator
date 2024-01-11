@@ -1,20 +1,16 @@
 //Connect all references between HTML and Javascript.
-var generateBtn = document.querySelector("#generate");
-var formBtn = document.querySelector("#form");
-var copyBtn = document.querySelector("#copy");
-var passwordText = document.querySelector("#password");
-var questions = document.querySelector("#questions");
-var ifLength = document.querySelector("#ifLength");
-var ifLowercase = document.querySelector("#ifLowercase");
-var ifUppercase = document.querySelector("#ifUppercase");
-var ifNumerical = document.querySelector("#ifNumerical");
-var ifSpecial = document.querySelector("#ifSpecial");
+function getElementById(id) {
+  return document.querySelector("#" + id);
+}
 
 // Set strings based on character selection.
-var lowercase = "abcdefghijklmnopqrstuvwxyz";
-var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numerical = "0123456789";
-var special = '!"#$%&()*+,-./:;<=>?@[^_`{|}~';
+var characterSets = {
+  lowercase: "abcdefghijklmnopqrstuvwxyz",
+  uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  numerical: "0123456789",
+  special: '!"#$%&()*+,-./:;<=>?@[^_`{|}~',
+}
+
 
 // Create a random string of characters based on user inputs.
 function generatePassword(length) {
@@ -23,28 +19,28 @@ function generatePassword(length) {
 
   // Sets which characters to allow in the random string.
   if (ifLowercase.checked) {
-    chosenCharacters += lowercase;
+    chosenCharacters += characterSets.lowercase;
   }
   else {
-    chosenCharacters = chosenCharacters.replace(lowercase, "");
+    chosenCharacters = chosenCharacters.replace(characterSets.lowercase, "");
   }
   if (ifUppercase.checked) {
-    chosenCharacters += uppercase;
+    chosenCharacters += characterSets.uppercase;
   }
   else {
-    chosenCharacters = chosenCharacters.replace(uppercase, "");
+    chosenCharacters = chosenCharacters.replace(characterSets.uppercase, "");
   }
   if (ifNumerical.checked) {
-    chosenCharacters += numerical;
+    chosenCharacters += characterSets.numerical;
   }
   else {
-    chosenCharacters = chosenCharacters.replace(numerical, "");
+    chosenCharacters = chosenCharacters.replace(characterSets.numerical, "");
   }
   if (ifSpecial.checked) {
-    chosenCharacters += special;
+    chosenCharacters += characterSets.special;
   }
   else {
-    chosenCharacters = chosenCharacters.replace(special, "");
+    chosenCharacters = chosenCharacters.replace(characterSets.special, "");
   }
 
   // Picks random characters for the string.
@@ -55,11 +51,9 @@ function generatePassword(length) {
   // Returns an error if user selection is incorrect.
   if (ifLength.value < 8) {
     result = "Too Short";
-  }
-  if (ifLength.value > 128) {
+  } else if (ifLength > 128) {
     result = "Too Long";
-  }
-  if (result === "") {
+  } else if (result === "") {
     result = "Selection Necessary";
   }
 
@@ -92,7 +86,7 @@ formBtn.addEventListener("click", showForm);
 /* Copy password into clipboard */
 function copyPassword() {
   navigator.clipboard.writeText
-    (password.value);
+    (passwordText.value);
 }
 
 // Add event listener to copy button

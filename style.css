@@ -96,7 +96,7 @@ button[disabled] {
   float: right;
 }
 
-#password {
+#passwordText {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -139,7 +139,7 @@ form div * {
     padding: 10px 10px;
   }
 
-  #password {
+  #passwordText {
     font-size: 1rem;
   }
 }
