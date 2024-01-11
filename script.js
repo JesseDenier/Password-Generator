@@ -4,10 +4,13 @@ function getElementById(id) {
 }
 
 // Set strings based on character selection.
-var lowercase = "abcdefghijklmnopqrstuvwxyz";
-var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numerical = "0123456789";
-var special = '!"#$%&()*+,-./:;<=>?@[^_`{|}~';
+var characterSets = {
+  lowercase: "abcdefghijklmnopqrstuvwxyz",
+  uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  numerical: "0123456789",
+  special: '!"#$%&()*+,-./:;<=>?@[^_`{|}~',
+}
+
 
 // Create a random string of characters based on user inputs.
 function generatePassword(length) {
@@ -16,28 +19,28 @@ function generatePassword(length) {
 
   // Sets which characters to allow in the random string.
   if (ifLowercase.checked) {
-    chosenCharacters += lowercase;
+    chosenCharacters += characterSets.lowercase;
   }
   else {
-    chosenCharacters = chosenCharacters.replace(lowercase, "");
+    chosenCharacters = chosenCharacters.replace(characterSets.lowercase, "");
   }
   if (ifUppercase.checked) {
-    chosenCharacters += uppercase;
+    chosenCharacters += characterSets.uppercase;
   }
   else {
-    chosenCharacters = chosenCharacters.replace(uppercase, "");
+    chosenCharacters = chosenCharacters.replace(characterSets.uppercase, "");
   }
   if (ifNumerical.checked) {
-    chosenCharacters += numerical;
+    chosenCharacters += characterSets.numerical;
   }
   else {
-    chosenCharacters = chosenCharacters.replace(numerical, "");
+    chosenCharacters = chosenCharacters.replace(characterSets.numerical, "");
   }
   if (ifSpecial.checked) {
-    chosenCharacters += special;
+    chosenCharacters += characterSets.special;
   }
   else {
-    chosenCharacters = chosenCharacters.replace(special, "");
+    chosenCharacters = chosenCharacters.replace(characterSets.special, "");
   }
 
   // Picks random characters for the string.
