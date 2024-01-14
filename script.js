@@ -147,4 +147,7 @@ function writePassword(event) {
   var passwordLength = ifLength.value;
   var password = generatePassword(passwordLength);
   passwordText.value = password;
+
+  // Copies the password to the user's clipboard as well.
+  navigator.clipboard.writeText(passwordText.value);
 }
