@@ -70,6 +70,7 @@ function showForm() {
   var numericalEl = document.createElement("p");
   var ifSpecialEl = document.createElement("input");
   var specialEl = document.createElement("p");
+  var confirmSelectionsEl = document.createElement("button");
 
   // Sets text content of "p" elements.
   lengthEl.textContent = "Password Length: ";
@@ -77,6 +78,7 @@ function showForm() {
   uppercaseEl.textContent = "Uppercase";
   numericalEl.textContent = "Numerical";
   specialEl.textContent = "Special";
+  confirmSelectionsEl.textContent = "Confirm Selections";
 
   // Establises order and parent/child relationship of HTML elements.
   body.appendChild(questionsEl);
@@ -90,21 +92,31 @@ function showForm() {
   questionsEl.appendChild(numericalEl);
   questionsEl.appendChild(ifSpecialEl);
   questionsEl.appendChild(specialEl);
+  questionsEl.appendChild(confirmSelectionsEl);
 
   // Sets CSS and HTML attributes to all elements.
-  questionsEl.setAttribute("style", "position:fixed; top:20%; left:50%; transform:translate(-50%, -50%); z-index: 9999; background-color: red");
+  questionsEl.setAttribute("style", "position: fixed; top: 200px; left: 50%; transform: translate(-50%, -50%); z-index: 9999; background-color: hsl(0, 0%, 100%); border-radius: 5px; border-width: 1px; box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px; color: hsl(206, 17%, 28%); font-size: 18px margin: 0 auto; max-width: 800px; padding: 30px 40px; display: flex");
+
   lengthEl.setAttribute("style", "display: inline");
   passwordLengthEl.setAttribute("type", "number");
   passwordLengthEl.setAttribute("id", "ifLength");
-  passwordLengthEl.setAttribute("style", "min:8; max:128; value:8");
+  passwordLengthEl.min = 8;
+  passwordLengthEl.max = 128;
+  passwordLengthEl.value = 8;
   ifLowercaseEl.setAttribute("type", "checkbox")
   ifLowercaseEl.setAttribute("id", "ifLowercase")
+  ifLowercaseEl.setAttribute("checked", "true");
   ifUppercaseEl.setAttribute("type", "checkbox")
   ifUppercaseEl.setAttribute("id", "ifUppercase")
+  ifUppercaseEl.setAttribute("checked", "true");
   ifNumericalEl.setAttribute("type", "checkbox")
   ifNumericalEl.setAttribute("id", "ifNumerical")
+  ifNumericalEl.setAttribute("checked", "true");
   ifSpecialEl.setAttribute("type", "checkbox")
   ifSpecialEl.setAttribute("id", "ifSpecial")
+  ifSpecialEl.setAttribute("checked", "true");
+  confirmSelectionsEl.setAttribute("class", "btn")
+  confirmSelectionsEl.setAttribute("id", "generateBtn")
 }
 
 // Add event listener to form button.
