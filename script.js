@@ -68,12 +68,3 @@ function showForm() {
 
 // Add event listener to form button.
 formBtn.addEventListener('click', showForm);
-
-// Copy password into user clipboard.
-function copyPassword() {
-  navigator.clipboard.writeText
-    (passwordText.value);
-}
-
-// Add event listener to copy button.
-copyBtn.addEventListener('click', copyPassword);
