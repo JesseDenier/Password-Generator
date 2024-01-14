@@ -2,8 +2,9 @@
 
 ## Description
 Javascript password generator project for UT Coding Bootcamp. This shows my abilities with javascript. I wrote code that takes input from the end-user to generate random passwords based on their criteria.
-Here is a screenshot of my completed project as of 1.11.24.
+Here are screenshots of my completed project as of 1.14.24.
 ![Password Generator Site](<Password Generator Screenshot.png>)
+![User Chosen Password Criteria](<Password Criteria Screenshot.png>)
 
 ## Installation
 
@@ -12,7 +13,7 @@ N/A
 ## Usage
 
 Here is a link to the website: https://jessedenier.github.io/Password-Generator/
-This webpage can be opened and interacted with using buttons, and the expandable form located below the buttons. The Generate button will create a random string of characters based on the users answers to the form. The options button will show and hide the form. Lastly the copy button will allow the user an easy way to copy the password to their clipboard for use elsewhere.
+This webpage can be opened and interacted with using the "Generate Password" button and the pop-up form which appears on click.
 
 ## Credits
 
