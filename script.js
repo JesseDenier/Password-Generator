@@ -12,11 +12,10 @@ var characterSets = {
   ifSpecial: '!"#$%&()*+,-./:;<=>?@[^_`{|}~',
 }
 
-// Builds an array of checkboxes.
-var checkboxes = [ifLowercase, ifUppercase, ifNumerical, ifSpecial];
-
 // Create a random string of characters based on user inputs.
 function generatePassword(length) {
+  // Builds an array of checkboxes, and sets results to empty.
+  var checkboxes = [ifLowercase, ifUppercase, ifNumerical, ifSpecial];
   var result = '';
   var chosenCharacters = '';
 
@@ -57,13 +56,55 @@ function writePassword() {
 // Add event listener to generate button.
 generateBtn.addEventListener('click', writePassword);
 
-//Show or hide the form.
 function showForm() {
-  if (questions.style.display === 'none') {
-    questions.style.display = 'block';
-  } else {
-    questions.style.display = 'none';
-  }
+  // Establishes all variable names as HTML element tags.
+  var body = document.body;
+  var questionsEl = document.createElement("form");
+  var lengthEl = document.createElement("p");
+  var passwordLengthEl = document.createElement("input");
+  var ifLowercaseEl = document.createElement("input");
+  var lowercaseEl = document.createElement("p");
+  var ifUppercaseEl = document.createElement("input");
+  var uppercaseEl = document.createElement("p");
+  var ifNumericalEl = document.createElement("input");
+  var numericalEl = document.createElement("p");
+  var ifSpecialEl = document.createElement("input");
+  var specialEl = document.createElement("p");
+
+  // Sets text content of "p" elements.
+  lengthEl.textContent = "Password Length: ";
+  lowercaseEl.textContent = "Lowercase";
+  uppercaseEl.textContent = "Uppercase";
+  numericalEl.textContent = "Numerical";
+  specialEl.textContent = "Special";
+
+  // Establises order and parent/child relationship of HTML elements.
+  body.appendChild(questionsEl);
+  questionsEl.appendChild(lengthEl);
+  questionsEl.appendChild(passwordLengthEl);
+  questionsEl.appendChild(ifLowercaseEl);
+  questionsEl.appendChild(lowercaseEl);
+  questionsEl.appendChild(ifUppercaseEl);
+  questionsEl.appendChild(uppercaseEl);
+  questionsEl.appendChild(ifNumericalEl);
+  questionsEl.appendChild(numericalEl);
+  questionsEl.appendChild(ifSpecialEl);
+  questionsEl.appendChild(specialEl);
+
+  // Sets CSS and HTML attributes to all elements.
+  questionsEl.setAttribute("style", "position:fixed; top:20%; left:50%; transform:translate(-50%, -50%); z-index: 9999; background-color: red");
+  lengthEl.setAttribute("style", "display: inline");
+  passwordLengthEl.setAttribute("type", "number");
+  passwordLengthEl.setAttribute("id", "ifLength");
+  passwordLengthEl.setAttribute("style", "min:8; max:128; value:8");
+  ifLowercaseEl.setAttribute("type", "checkbox")
+  ifLowercaseEl.setAttribute("id", "ifLowercase")
+  ifUppercaseEl.setAttribute("type", "checkbox")
+  ifUppercaseEl.setAttribute("id", "ifUppercase")
+  ifNumericalEl.setAttribute("type", "checkbox")
+  ifNumericalEl.setAttribute("id", "ifNumerical")
+  ifSpecialEl.setAttribute("type", "checkbox")
+  ifSpecialEl.setAttribute("id", "ifSpecial")
 }
 
 // Add event listener to form button.
