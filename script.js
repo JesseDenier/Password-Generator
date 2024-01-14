@@ -47,7 +47,7 @@ function generatePassword(length) {
 }
 
 // Write password to the #passwordText HTML element.
-function writePassword() {
+function writePassword(event) {
   var passwordLength = ifLength.value;
   var password = generatePassword(passwordLength);
   passwordText.value = password;
@@ -57,6 +57,13 @@ function writePassword() {
 generateBtn.addEventListener('click', writePassword);
 
 function showForm() {
+
+  // Checks if Form has already been created.
+  var existingForm = document.querySelector("#questions");
+  if (existingForm) {
+    return;
+  }
+
   // Establishes all variable names as HTML element tags.
   var body = document.body;
   var questionsEl = document.createElement("form");
@@ -96,7 +103,7 @@ function showForm() {
 
   // Sets CSS and HTML attributes to all elements.
   questionsEl.setAttribute("style", "position: fixed; top: 200px; left: 50%; transform: translate(-50%, -50%); z-index: 9999; background-color: hsl(0, 0%, 100%); border-radius: 5px; border-width: 1px; box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px; color: hsl(206, 17%, 28%); font-size: 18px margin: 0 auto; max-width: 800px; padding: 30px 40px; display: flex");
-
+  questionsEl.setAttribute("id", "questions");
   lengthEl.setAttribute("style", "display: inline");
   passwordLengthEl.setAttribute("type", "number");
   passwordLengthEl.setAttribute("id", "ifLength");
@@ -115,7 +122,8 @@ function showForm() {
   ifSpecialEl.setAttribute("type", "checkbox")
   ifSpecialEl.setAttribute("id", "ifSpecial")
   ifSpecialEl.setAttribute("checked", "true");
-  confirmSelectionsEl.setAttribute("class", "btn")
+  confirmSelectionsEl.setAttribute("class", "btn");
+  confirmSelectionsEl.setAttribute("type", "button");
   confirmSelectionsEl.setAttribute("id", "generateBtn")
 }
 
