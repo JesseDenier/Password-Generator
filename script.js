@@ -43,6 +43,10 @@ function generatePassword(length) {
     result = 'Selection Necessary';
   }
 
+  // Deletes the form HTML so process can be repeated.
+  var elementToRemove = document.getElementById("questions");
+  elementToRemove.remove();
+
   return result;
 }
 
@@ -53,11 +57,7 @@ function writePassword(event) {
   passwordText.value = password;
 }
 
-// Add event listener to generate button.
-generateBtn.addEventListener('click', writePassword);
-
 function showForm() {
-
   // Checks if Form has already been created.
   var existingForm = document.querySelector("#questions");
   if (existingForm) {
@@ -68,7 +68,8 @@ function showForm() {
   var body = document.body;
   var questionsEl = document.createElement("form");
   var lengthEl = document.createElement("p");
-  var passwordLengthEl = document.createElement("input");
+  var ifLengthEl = document.createElement("input");
+  var lengthRulesEl = document.createElement("p");
   var ifLowercaseEl = document.createElement("input");
   var lowercaseEl = document.createElement("p");
   var ifUppercaseEl = document.createElement("input");
@@ -81,6 +82,7 @@ function showForm() {
 
   // Sets text content of "p" elements.
   lengthEl.textContent = "Password Length: ";
+  lengthRulesEl.textContent = "8: Minimum, 128: Maximum";
   lowercaseEl.textContent = "Lowercase";
   uppercaseEl.textContent = "Uppercase";
   numericalEl.textContent = "Numerical";
@@ -90,7 +92,8 @@ function showForm() {
   // Establises order and parent/child relationship of HTML elements.
   body.appendChild(questionsEl);
   questionsEl.appendChild(lengthEl);
-  questionsEl.appendChild(passwordLengthEl);
+  questionsEl.appendChild(ifLengthEl);
+  questionsEl.appendChild(lengthRulesEl);
   questionsEl.appendChild(ifLowercaseEl);
   questionsEl.appendChild(lowercaseEl);
   questionsEl.appendChild(ifUppercaseEl);
@@ -102,14 +105,13 @@ function showForm() {
   questionsEl.appendChild(confirmSelectionsEl);
 
   // Sets CSS and HTML attributes to all elements.
-  questionsEl.setAttribute("style", "position: fixed; top: 200px; left: 50%; transform: translate(-50%, -50%); z-index: 9999; background-color: hsl(0, 0%, 100%); border-radius: 5px; border-width: 1px; box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px; color: hsl(206, 17%, 28%); font-size: 18px margin: 0 auto; max-width: 800px; padding: 30px 40px; display: flex");
+  questionsEl.setAttribute("style", "position: fixed; top: 100px; left: 50%; transform: translate(-50%); z-index: 9999; background-color: hsl(0, 0%, 100%); border-radius: 5px; border-width: 1px; box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px; color: hsl(206, 17%, 28%); font-size: 18px; margin: 0 auto; max-width: 800px; padding: 30px 40px");
   questionsEl.setAttribute("id", "questions");
-  lengthEl.setAttribute("style", "display: inline");
-  passwordLengthEl.setAttribute("type", "number");
-  passwordLengthEl.setAttribute("id", "ifLength");
-  passwordLengthEl.min = 8;
-  passwordLengthEl.max = 128;
-  passwordLengthEl.value = 8;
+  ifLengthEl.setAttribute("type", "number");
+  ifLengthEl.setAttribute("id", "ifLength");
+  ifLengthEl.min = 8;
+  ifLengthEl.max = 128;
+  ifLengthEl.value = 8;
   ifLowercaseEl.setAttribute("type", "checkbox")
   ifLowercaseEl.setAttribute("id", "ifLowercase")
   ifLowercaseEl.setAttribute("checked", "true");
@@ -125,6 +127,22 @@ function showForm() {
   confirmSelectionsEl.setAttribute("class", "btn");
   confirmSelectionsEl.setAttribute("type", "button");
   confirmSelectionsEl.setAttribute("id", "generateBtn")
+
+  lengthEl.setAttribute("style", "text-align: center");
+  ifLengthEl.setAttribute("style", "text-align: center");
+  lengthRulesEl.setAttribute("style", "text-align: center");
+  ifLowercaseEl.setAttribute("style", "text-align: center");
+  lowercaseEl.setAttribute("style", "text-align: center");
+  ifUppercaseEl.setAttribute("style", "text-align: center");
+  uppercaseEl.setAttribute("style", "text-align: center");
+  ifNumericalEl.setAttribute("style", "text-align: center");
+  numericalEl.setAttribute("style", "text-align: center");
+  ifSpecialEl.setAttribute("style", "text-align: center");
+  specialEl.setAttribute("style", "text-align: center");
+  confirmSelectionsEl.setAttribute("style", "text-align: center");
+
+  // Add event listener to generate button.
+  generateBtn.addEventListener('click', writePassword);
 }
 
 // Add event listener to form button.
